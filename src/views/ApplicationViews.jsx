@@ -5,6 +5,8 @@ import { Login } from "../components/auth/Login"
 import { Register } from "../components/auth/Register"
 import { MyProfilePage } from "../components/profiles/MyProfilePage"
 import { MusiciansProfilesPage } from "../components/profiles/MusiciansProfilesPage"
+import { DashboardPage } from "../components/dashboard/DashboardPage"
+import { MyInvitesPage } from "../components/invites/MyInvitesPage"
 
 export const ApplicationViews = ({ token, setToken }) => {
   if (!token) {
@@ -21,7 +23,9 @@ export const ApplicationViews = ({ token, setToken }) => {
     <>
       <NavBar token={token} setToken={setToken} />
       <Routes>
+        <Route path="/" element={<DashboardPage />} />
         <Route path="/gigs" element={<MyGigsPage />} />
+        <Route path="/invites" element={<MyInvitesPage />} />
         <Route path="/my-profile" element={<MyProfilePage />} />
         <Route path="/musicians" element={<MusiciansProfilesPage />} />
         <Route path="*" element={<Navigate to="/gigs" />} />
