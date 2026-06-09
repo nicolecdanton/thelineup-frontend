@@ -26,7 +26,7 @@ export const ApplicationViews = ({ token, setToken }) => {
         <Route path="/" element={<DashboardPage />} />
         <Route path="/gigs" element={<MyGigsPage />} />
         <Route path="/invites" element={<MyInvitesPage />} />
-        <Route path="/my-profile" element={<MyProfilePage />} />
+        <Route path="/my-profile" element={<MyProfilePage setToken={setToken} />} />
         <Route path="/musicians" element={<MusiciansProfilesPage />} />
         <Route path="*" element={<Navigate to="/gigs" />} />
       </Routes>

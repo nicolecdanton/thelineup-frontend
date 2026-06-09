@@ -1,16 +1,23 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { getMyProfile } from "../../services/profiles"
 import { ProfileCard } from "./ProfileCard"
 import { EditProfileForm } from "./EditProfileForm"
 import "./profiles.css"
 
-export const MyProfilePage = () => {
+export const MyProfilePage = ({ setToken }) => {
   const [profile, setProfile] = useState(null)
   const [showEditForm, setShowEditForm] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     getMyProfile().then((profileData) => setProfile(profileData))
   }, [showEditForm])
+
+  const handleLogout = () => {
+    setToken(null)
+    navigate("/login")
+  }
 
   if (!profile) return null
 
@@ -19,6 +26,7 @@ export const MyProfilePage = () => {
       <h1>My Profile</h1>
       <ProfileCard profile={profile} />
       <button className="btn-info" onClick={() => setShowEditForm(true)}>Edit Profile</button>
+      <button className="btn-warning" onClick={handleLogout}>Logout</button>
       {showEditForm && (
         <div className="modal-overlay">
           <div className="modal-content">

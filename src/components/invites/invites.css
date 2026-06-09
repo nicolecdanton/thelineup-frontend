@@ -1,3 +1,32 @@
+/* ── Send Invite Modal Form ───────────────────── */
+.musician-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 0;
+  flex: 1;
+}
+
+.musician-picker-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.musician-option .profile-card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.musician-picker-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
 /* ── Invite List ──────────────────────────────── */
 .invite-list {
   display: flex;

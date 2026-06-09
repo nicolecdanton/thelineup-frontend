@@ -5,7 +5,11 @@ export const App = () => {
   const [token, setTokenState] = useState(localStorage.getItem("lineup_token"))
 
   const setToken = (newToken) => {
-    localStorage.setItem("lineup_token", newToken)
+    if (newToken) {
+      localStorage.setItem("lineup_token", newToken)
+    } else {
+      localStorage.removeItem("lineup_token")
+    }
     setTokenState(newToken)
   }
 

@@ -25,13 +25,12 @@ export const sendInvite = async (musicianData) => {
 }
 
 export const respondToInvite = async (inviteId, status) => {
-  const res = await fetch(`http://localhost:8000/invites/${inviteId}/`, {
-    method: "PATCH",
+  await fetch(`http://localhost:8000/invites/${inviteId}/`, {
+    method: "PUT",
     headers: {
       Authorization: `Token ${localStorage.getItem("lineup_token")}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ status }),
+    body: JSON.stringify({ status, responded_at: new Date().toISOString() }),
   })
-  return res.json()
 }

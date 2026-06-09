@@ -2,6 +2,7 @@ import { getProfileByInstrument } from "../../services/profiles"
 import { useState, useEffect } from "react"
 import { ProfileCard } from "../profiles/ProfileCard"
 import { sendInvite } from "../../services/invites"
+import "./invites.css"
 
 //parent component: BookerViewGigSlotRow
 export const SendInviteForm = ({slot, onClose}) => {
@@ -30,8 +31,10 @@ export const SendInviteForm = ({slot, onClose}) => {
             </div>
         ))}
         </div>
-        <button className="btn-primary" onClick={handleSubmit} disabled={!selectedMusicianId}>Send Invite</button>
-        <button className="btn-warning" onClick={onClose}>Cancel</button>
+        <div className="musician-picker-actions">
+            <button className="btn-primary" onClick={handleSubmit} disabled={!selectedMusicianId}>Send Invite</button>
+            <button className="btn-warning" onClick={onClose}>Cancel</button>
+        </div>
     </div>
 )
 }

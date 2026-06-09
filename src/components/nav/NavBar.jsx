@@ -9,15 +9,15 @@ export const NavBar = () => {
         </li>
         <li className="navbar-item">
             <Link to= '/gigs'>My Gigs</Link>
-        </li> 
+        </li>
         <li className="navbar-item">
             <Link to= '/invites'>My Inbox</Link>
-        </li> 
+        </li>
          <li className="navbar-item">
             <Link to= '/musicians'>Musicians</Link>
         </li>
         <li className="navbar-item">
             <Link to= '/my-profile'>My Profile</Link>
-        </li> 
+        </li>
     </ul>
 )}
