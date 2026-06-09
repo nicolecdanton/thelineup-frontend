@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getMyGigs } from '../../services/gigs'
+import { getMyGigs, deleteGig } from '../../services/gigs'
 import { EditGigForm } from './EditGigForm'
 import { BookerViewGigSlotRow } from '../gigSlots/BookerViewGigSlotRow'
 import { BookerCreateSlotForm } from '../gigSlots/BookerCreateSlotForm'
@@ -11,16 +11,31 @@ export const GigCards = ({ showCreateForm }) => {
   const [gigs, setGigs] = useState([])
   const [selectedGig, setSelectedGig] = useState(null)
   const [showSlotFormForGig, setShowSlotFormForGig] = useState(null)
+  const [gigToDelete, setGigToDelete] = useState(null)
+
+  const loadGigs = () => {
+    getMyGigs().then((gigsArray) => setGigs(gigsArray))
+  }
 
   useEffect(() => {
-    getMyGigs().then((GigsArr) => setGigs(GigsArr))
-    }, [showCreateForm])
+    loadGigs()
+  }, [showCreateForm])
+
+  const handleDelete = () => {
+    deleteGig(gigToDelete.id).then(() => {
+      setGigToDelete(null)
+      loadGigs()
+    })
+  }
 
   return (
     <div className="gig-list">
       {gigs.map((gig) => (
         <div key={gig.id} className="gig-card">
-          <h3>{gig.title}</h3>
+          <div className="gig-card-header">
+            <h3>{gig.title}</h3>
+            <button className="btn-trash" onClick={() => setGigToDelete(gig)}>🗑</button>
+          </div>
           <p>Venue: {gig.venue.name}</p>
           <p>Date: {gig.date}</p>
           <p>Time: {gig.time}</p>
@@ -46,6 +61,18 @@ export const GigCards = ({ showCreateForm }) => {
         
         
       ))}
+      {gigToDelete && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Delete Gig</h2>
+            <p>Are you sure you want to delete <strong>{gigToDelete.title}</strong>? This cannot be undone.</p>
+            <div className="modal-actions">
+              <button className="btn-warning" onClick={handleDelete}>Delete</button>
+              <button className="btn-secondary" onClick={() => setGigToDelete(null)}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

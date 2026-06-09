@@ -1,78 +1,95 @@
-/* ========================================
-   Login & Auth Container
-   ======================================== */
-
+/* ── LOGIN CONTAINER ──────────────────────────── */
 .container-login {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--accent-light) 100%);
-  padding: var(--space-xl);
+  background-color: #000;
+  /* subtle halftone-dot texture — classic tattoo flash feel */
+  background-image:
+    radial-gradient(circle, rgba(57, 255, 20, 0.06) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 0, 110, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px;
+  background-position: 0 0, 12px 12px;
+  padding: 2rem;
 }
 
 .container-login > section {
   width: 100%;
   max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .container-login > section > a {
-  color: var(--primary);
+  color: var(--neon-green);
   text-decoration: none;
-  font-weight: 600;
-  transition: color var(--transition-base);
-  border-bottom: 2px solid var(--primary-lighter);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  transition: text-shadow 0.2s;
 }
 
 .container-login > section > a:hover {
-  color: var(--primary-light);
-  border-bottom-color: var(--primary);
+  text-shadow: var(--glow-green);
 }
 
-/* ========================================
-   Login Form
-   ======================================== */
-
+/* ── LOGIN FORM ───────────────────────────────── */
 .form-login {
   width: 100%;
-  background: white;
-  border-radius: var(--radius-xl);
-  padding: var(--space-2xl);
-  box-shadow: var(--shadow-xl);
-  border: 1px solid var(--outline);
+  background: #0a0a0a;
+  border: 1px solid #222;
+  border-top: 3px solid var(--neon-green);
+  border-radius: 0;
+  padding: 2.5rem 2rem;
+  box-shadow:
+    0 0 30px rgba(57, 255, 20, 0.15),
+    0 0 80px rgba(0, 0, 0, 0.9);
+  position: relative;
+}
+
+/* top decoration — like a neon sign marquee */
+.form-login::before {
+  content: '✦  LINEUP  ✦';
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0a0a0a;
+  padding: 0 1rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 6px;
+  color: var(--neon-green);
+  text-shadow: var(--glow-green);
+  white-space: nowrap;
 }
 
 .form-login > h1 {
-  font-size: 2.25rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 6px;
   text-align: center;
-  color: var(--text-primary);
-  margin-bottom: var(--space-md);
-  font-family: var(--font-family-accent);
+  color: var(--neon-green);
+  text-shadow: var(--glow-green);
+  margin-bottom: 0.25rem;
 }
 
 .form-login > h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
   text-align: center;
-  font-size: 1.125rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  margin-bottom: var(--space-xl);
+  font-size: 1rem;
+  letter-spacing: 3px;
+  color: #555;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
 }
 
-.form-login > fieldset > input[type="email"] {
-  width: 100%;
-}
-
-.login-btn {
-  width: 100%;
-  margin-top: var(--space-md);
-  padding: 1rem;
-  font-size: 1.125rem;
-}
-
-/* ========================================
-   Form Styles
-   ======================================== */
-
+/* ── FORM STRUCTURE ───────────────────────────── */
 form {
   width: 100%;
 }
@@ -80,110 +97,124 @@ form {
 fieldset {
   min-width: 0;
   padding: 0;
-  margin: 0 0 var(--space-lg) 0;
+  margin: 0 0 1.25rem 0;
   border: 0;
 }
 
 .form-control {
   width: 100%;
-  padding: 0.875rem 1rem;
-  font-size: 1rem;
-  border: 2px solid var(--outline);
-  border-radius: var(--radius-md);
-  background-color: white;
-  color: var(--text-primary);
-  transition: all var(--transition-base);
-  font-family: var(--font-family-base);
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 1px;
+  border: 1px solid #333;
+  border-radius: 0;
+  background-color: #111;
+  color: var(--dark);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
 }
 
 .form-control:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(45, 106, 79, 0.1);
+  border-color: var(--neon-green);
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.25);
 }
 
 .form-control::placeholder {
-  color: var(--gray);
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
 }
 
 .form-group {
-  margin-bottom: var(--space-lg);
+  margin-bottom: 1.25rem;
   display: flex;
   flex-direction: column;
+  gap: 0.4rem;
 }
 
 .form-group label {
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--space-sm);
+  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
+  color: #666;
   font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 2px;
 }
 
+/* ── SUBMIT BUTTON ────────────────────────────── */
+.login-btn,
 .form-btn {
   width: 100%;
-  margin-top: var(--space-md);
+  margin-top: 0.5rem;
+  padding: 0.85rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 5px;
+  background-color: transparent;
+  border: 2px solid var(--neon-green);
+  color: var(--neon-green);
+  text-transform: uppercase;
+  cursor: pointer;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: background-color 0.2s, box-shadow 0.2s, color 0.2s;
 }
 
-/* ========================================
-   Form Validation & States
-   ======================================== */
+.login-btn:hover,
+.form-btn:hover {
+  background-color: var(--neon-green);
+  color: #000;
+  box-shadow: var(--glow-green);
+}
 
+/* ── VALIDATION STATES ────────────────────────── */
 .form-control:invalid:not(:placeholder-shown) {
-  border-color: var(--danger);
+  border-color: var(--blood-red);
+  box-shadow: 0 0 6px rgba(204, 0, 0, 0.2);
 }
 
 .form-control:valid:not(:placeholder-shown) {
-  border-color: var(--success);
+  border-color: #222;
 }
 
 .error-message {
-  color: var(--danger);
-  font-size: 0.875rem;
-  margin-top: var(--space-sm);
+  color: var(--blood-red);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.25rem;
 }
 
 .success-message {
-  color: var(--success);
-  font-size: 0.875rem;
-  margin-top: var(--space-sm);
+  color: var(--neon-green);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.25rem;
+  text-shadow: 0 0 4px rgba(57, 255, 20, 0.4);
 }
 
-/* ========================================
-   Auth Links & Footer
-   ======================================== */
-
+/* ── AUTH FOOTER ──────────────────────────────── */
 .auth-footer {
   text-align: center;
-  margin-top: var(--space-lg);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--outline);
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #1a1a1a;
 }
 
 .auth-footer p {
-  color: var(--text-muted);
-  margin-bottom: var(--space-sm);
+  color: #444;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* ========================================
-   Responsive Design
-   ======================================== */
-
+/* ── RESPONSIVE ───────────────────────────────── */
 @media (max-width: 768px) {
-  .container-login {
-    padding: var(--space-md);
-  }
-
-  .form-login {
-    padding: var(--space-xl);
-  }
-
-  .form-login > h1 {
-    font-size: 1.875rem;
-  }
-
-  .form-login > h2 {
-    font-size: 1rem;
-  }
+  .container-login { padding: 1rem; }
+  .form-login { padding: 2rem 1.25rem; }
+  .form-login > h1 { font-size: 2.25rem; }
 }

@@ -1,4 +1,4 @@
-/* ── Profile List ─────────────────────────────── */
+/* ── PROFILE LIST ─────────────────────────────── */
 .profile-list {
   display: flex;
   flex-wrap: wrap;
@@ -8,69 +8,115 @@
   margin: 0 auto;
 }
 
-/* ── Profile Card ─────────────────────────────── */
+/* ── PROFILE CARD ─────────────────────────────── */
 .profile-card {
-  background-color: var(--white);
-  border-radius: 0.75rem;
+  background-color: var(--card-bg);
+  border: 1px solid #222;
+  border-top: 3px solid var(--neon-pink);
+  border-radius: 0;
   padding: 1.25rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(255, 0, 110, 0.1);
   width: 220px;
+  position: relative;
+  transition: box-shadow 0.2s, border-top-color 0.2s;
+}
+
+.profile-card::after {
+  content: '★';
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.8rem;
+  color: var(--neon-pink);
+  font-size: 0.65rem;
+  opacity: 0.4;
+}
+
+.profile-card:hover {
+  border-top-color: var(--neon-blue);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.2);
 }
 
 .profile-card h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: #fff;
   margin: 0 0 0.25rem;
-  color: var(--dark);
+  text-transform: uppercase;
 }
 
 .profile-username {
   margin: 0 0 0.5rem;
-  color: var(--secondary);
-  font-size: 0.875rem;
+  color: var(--neon-blue);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .profile-bio {
-  font-size: 0.875rem;
-  color: var(--dark);
+  font-size: 0.85rem;
+  color: #888;
   margin: 0.5rem 0;
+  line-height: 1.5;
 }
 
 .profile-links {
   display: flex;
   gap: 0.75rem;
   margin: 0.5rem 0;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 
 .profile-links a {
-  color: var(--secondary);
+  color: var(--neon-blue);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.15s, text-shadow 0.15s;
 }
 
 .profile-links a:hover {
-  text-decoration: underline;
+  color: var(--neon-green);
+  text-shadow: var(--glow-green);
 }
 
 .profile-instruments {
   margin-top: 0.75rem;
-  font-size: 0.875rem;
+  font-size: 0.82rem;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .profile-instruments ul {
-  margin: 0.25rem 0 0;
-  padding-left: 1.25rem;
+  margin: 0.35rem 0 0;
+  padding-left: 0;
+  list-style: none;
 }
 
 .profile-instruments li {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
+  padding-left: 1rem;
+  position: relative;
+  color: #aaa;
 }
 
-/* ── My Profile Page ──────────────────────────── */
+.profile-instruments li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  color: var(--neon-pink);
+  font-size: 0.45rem;
+  top: 0.3rem;
+}
+
+/* ── MY PROFILE PAGE ──────────────────────────── */
 .my-profile-page {
   padding: 1.5rem;
-  max-width: 400px;
+  max-width: 420px;
   margin: 0 auto;
 }
 
-/* ── Edit Profile Form (modal) ────────────────── */
+/* ── EDIT PROFILE FORM ────────────────────────── */
 .edit-profile-form {
   display: flex;
   flex-direction: column;
@@ -78,19 +124,31 @@
 }
 
 .edit-profile-form label {
-  font-weight: bold;
-  font-size: 0.875rem;
-  color: var(--dark);
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
 .edit-profile-form input,
 .edit-profile-form textarea {
-  padding: 0.5rem;
-  border: 1px solid var(--outline);
-  border-radius: 0.4rem;
-  font-size: 1rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #333;
+  border-radius: 0;
+  font-size: 0.95rem;
+  font-family: 'Oswald', sans-serif;
   width: 100%;
   box-sizing: border-box;
+  background-color: #111;
+  color: var(--dark);
+  transition: border-color 0.2s;
+}
+
+.edit-profile-form input:focus,
+.edit-profile-form textarea:focus {
+  border-color: var(--neon-green);
+  box-shadow: 0 0 6px rgba(57, 255, 20, 0.2);
 }
 
 .edit-profile-form textarea {
@@ -99,23 +157,38 @@
 }
 
 .edit-profile-form fieldset {
-  border: 1px solid var(--outline);
-  border-radius: 0.4rem;
+  border: 1px solid #222;
+  border-left: 2px solid var(--neon-blue);
+  border-radius: 0;
   padding: 0.75rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  background: #0a0a0a;
 }
 
 .edit-profile-form fieldset legend {
-  font-weight: bold;
-  font-size: 0.875rem;
-  padding: 0 0.25rem;
+  font-weight: 700;
+  font-size: 0.78rem;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--neon-blue);
+  padding: 0 0.4rem;
 }
 
 .edit-profile-form fieldset label {
-  font-weight: normal;
+  font-weight: 400;
+  font-size: 0.82rem;
+  color: #aaa;
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.edit-profile-form input[type="checkbox"] {
+  width: auto;
+  accent-color: var(--neon-green);
 }

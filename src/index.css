@@ -1,113 +1,146 @@
-/* Import the google web fonts you want to use */
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Quicksand&family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600;700&family=Permanent+Marker&display=swap");
 
-/* FONTS
-font-family: "Nunito", sans-serif;
-font-family: "Quicksand", sans-serif;
-font-family: "Roboto", sans-serif; 
-*/
-
-/* COLOR PALETTE */
-/* Feel free to change these values and create your own color palette! https://coolors.co/ is a great resource */
+/* ── PUNK PALETTE ─────────────────────────────── */
 :root {
-  --primary: #ffb400;
-  --secondary: #00a6ed;
-  --info: #7fb800;
-  --warning: #f6511d;
-  --white: #ffffff;
-  --offWhite: #f2f2f3;
-  --dark: #3b3b3b;
-  --outline: #c3c0c0;
-  --appBackground: #dddade;
+  /* remap existing vars so all components pick up dark theme automatically */
+  --primary:        #FF006E;   /* hot pink  */
+  --secondary:      #00D4FF;   /* electric blue */
+  --info:           #39FF14;   /* neon green */
+  --warning:        #CC0000;   /* blood red */
+  --white:          #ffffff;
+  --offWhite:       #141414;   /* used as slot/nested bg → now dark */
+  --dark:           #e0e0e0;   /* used as text color → now light for dark bg */
+  --outline:        #333333;
+  --appBackground:  #000000;
+
+  /* extra punk vars */
+  --neon-green:  #39FF14;
+  --neon-pink:   #FF006E;
+  --neon-blue:   #00D4FF;
+  --neon-yellow: #FFE600;
+  --blood-red:   #CC0000;
+  --card-bg:     #0d0d0d;
+  --slot-bg:     #141414;
+  --glow-green:  0 0 6px #39FF14, 0 0 14px rgba(57, 255, 20, 0.4);
+  --glow-pink:   0 0 6px #FF006E, 0 0 14px rgba(255, 0, 110, 0.4);
+  --glow-blue:   0 0 6px #00D4FF, 0 0 14px rgba(0, 212, 255, 0.4);
+  --glow-red:    0 0 6px #CC0000, 0 0 14px rgba(204, 0, 0, 0.4);
 }
 
-/* GLOBAL STYLES */
-body,
-button,
-input,
-select,
-textarea {
-  font-family: "Nunito", sans-serif;
+/* ── GLOBAL RESET ─────────────────────────────── */
+body, button, input, select, textarea {
+  font-family: 'Oswald', sans-serif;
 }
 
 body {
   background-color: var(--appBackground);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(57, 255, 20, 0.018) 3px,
+      rgba(57, 255, 20, 0.018) 4px
+    );
+  margin: 0;
+  color: var(--dark);
+  min-height: 100vh;
+}
+
+/* ── TYPOGRAPHY ───────────────────────────────── */
+h1, h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--neon-green);
+  text-shadow: var(--glow-green);
+  margin: 0 0 0.75rem;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.25rem; }
+
+h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff;
   margin: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Roboto", serif;
-}
+p { color: var(--dark); }
 
-/* This prevents all the links in the app from having default underline */
 a {
   text-decoration: none;
   color: inherit;
 }
-/* This prevents all the links in the app from turning purple after visiting */
-a:visited {
-  color: inherit;
-}
-/* This prevents all the inputs in the app from having that blue outline when in focus */
-input:focus {
-  outline: none;
-}
 
-/* GLOBAL STYLING FOR ALL THE BUTTONS BUTTONS */
+a:visited { color: inherit; }
+
+input:focus { outline: none; }
+
+/* ── BUTTONS ──────────────────────────────────── */
 button {
-  padding: 0.5rem 1rem;
-  border: 1px solid transparent;
-  border-radius: 0.5rem;
-  color: var(--white);
+  padding: 0.5rem 1.25rem;
+  border: 2px solid transparent;
+  border-radius: 0;
   cursor: pointer;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  /* angled corner — tattoo flash / punk patch feel */
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
 }
 
-/* These are all the color options for the buttons */
-/* If you change the color variables, be sure to change the hover colors to be a darker shade of the colors you chose*/
 .btn-primary {
-  background-color: var(--primary);
+  background-color: var(--neon-pink);
+  border-color: var(--neon-pink);
+  color: #000;
 }
-
 .btn-primary:hover {
-  background-color: #e5a000;
+  background-color: transparent;
+  color: var(--neon-pink);
+  box-shadow: var(--glow-pink);
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
 }
 
 .btn-secondary {
-  background-color: var(--secondary);
+  background-color: transparent;
+  border-color: var(--neon-blue);
+  color: var(--neon-blue);
 }
-
 .btn-secondary:hover {
-  background-color: #0097d7;
+  background-color: var(--neon-blue);
+  color: #000;
+  box-shadow: var(--glow-blue);
 }
 
 .btn-warning {
-  background-color: var(--warning);
+  background-color: transparent;
+  border-color: var(--blood-red);
+  color: var(--blood-red);
 }
-
 .btn-warning:hover {
-  background-color: #e14617;
+  background-color: var(--blood-red);
+  color: #fff;
+  box-shadow: var(--glow-red);
 }
 
 .btn-info {
-  background-color: var(--info);
+  background-color: transparent;
+  border-color: var(--neon-green);
+  color: var(--neon-green);
 }
-
 .btn-info:hover {
-  background-color: #71a500;
+  background-color: var(--neon-green);
+  color: #000;
+  box-shadow: var(--glow-green);
 }
 
-/* This CSS can be deleted. It is only used for the first chapter */
-.welcome {
-  text-align: center;
-  margin: 5rem 14rem;
-  font-size: 4rem;
-  color: aliceblue;
-  font-weight: bold;
-  text-shadow: 2px 3px 4px lightslategray;
+/* ── GLOBAL PAGE WRAPPER ──────────────────────── */
+.page-container {
+  padding: 2rem 1.5rem;
 }
-

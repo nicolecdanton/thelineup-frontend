@@ -1,4 +1,4 @@
-/* ── Gig List ─────────────────────────────────── */
+/* ── GIG LIST ─────────────────────────────────── */
 .gig-list {
   display: flex;
   flex-direction: column;
@@ -8,25 +8,76 @@
   margin: 0 auto;
 }
 
-/* ── Individual Gig Card ──────────────────────── */
+/* ── GIG CARD ─────────────────────────────────── */
 .gig-card {
-  background-color: var(--white);
-  border-radius: 0.75rem;
+  background-color: var(--card-bg);
+  border: 1px solid #222;
+  border-left: 3px solid var(--neon-green);
+  border-radius: 0;
   padding: 1.5rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.12), inset 0 0 40px rgba(57, 255, 20, 0.02);
+  position: relative;
+  transition: box-shadow 0.2s ease;
 }
 
-.gig-card h3 {
-  margin: 0 0 0.5rem;
-  color: var(--dark);
+/* tattoo-flash diamond in corner */
+.gig-card::before {
+  content: '✦';
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  color: var(--neon-green);
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+.gig-card:hover {
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.25), inset 0 0 40px rgba(57, 255, 20, 0.04);
+  border-left-color: var(--neon-pink);
+}
+
+.gig-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #222;
+}
+
+.gig-card-header h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
 }
 
 .gig-card p {
-  margin: 0.25rem 0;
-  color: var(--dark);
+  margin: 0.3rem 0;
+  color: #aaa;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
 }
 
-/* ── Slot List ────────────────────────────────── */
+/* ── TRASH BUTTON ─────────────────────────────── */
+.btn-trash {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  color: var(--blood-red);
+  line-height: 1;
+  clip-path: none;
+  transition: color 0.15s, text-shadow 0.15s;
+}
+
+.btn-trash:hover {
+  color: #ff3333;
+  text-shadow: 0 0 8px #ff0000;
+  opacity: 1;
+}
+
+/* ── SLOT LIST ────────────────────────────────── */
 .slot-list {
   margin-top: 1rem;
   display: flex;
@@ -34,43 +85,71 @@
   gap: 0.5rem;
 }
 
-/* ── Individual Slot Row ──────────────────────── */
+/* ── SLOT ROW ─────────────────────────────────── */
 .slot-row {
   display: flex;
   align-items: center;
   gap: 1rem;
-  background-color: var(--offWhite);
-  border-radius: 0.5rem;
+  background-color: var(--slot-bg);
+  border: 1px solid #1e1e1e;
+  border-left: 2px solid var(--neon-pink);
+  border-radius: 0;
   padding: 0.75rem 1rem;
 }
 
 .slot-row p {
   margin: 0;
   flex: 1;
+  color: #ccc;
+  font-size: 0.875rem;
 }
 
-/* ── Modal ───────────────────────────────────── */
+/* ── MODAL OVERLAY ────────────────────────────── */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 100;
+  backdrop-filter: blur(2px);
 }
 
+/* ── MODAL CONTENT ────────────────────────────── */
 .modal-content {
-  background-color: var(--white);
-  border-radius: 0.75rem;
+  background-color: #0a0a0a;
+  border: 1px solid var(--neon-green);
+  border-top: 3px solid var(--neon-green);
+  box-shadow: var(--glow-green), 0 0 60px rgba(0,0,0,0.8);
+  border-radius: 0;
   padding: 2rem;
   width: 100%;
   max-width: 480px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* corner star decoration */
+.modal-content::before {
+  content: '★ ★ ★';
+  position: absolute;
+  top: -0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0a0a0a;
+  color: var(--neon-green);
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  padding: 0 0.5rem;
+  text-shadow: var(--glow-green);
 }
 
 .modal-content h2 {
   margin: 0 0 1.25rem;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 4px;
+  color: var(--neon-green);
+  text-shadow: var(--glow-green);
 }
 
 .modal-content form {
@@ -80,25 +159,42 @@
 }
 
 .modal-content label {
-  font-weight: bold;
-  font-size: 0.875rem;
-  color: var(--dark);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
 .modal-content input,
 .modal-content select,
 .modal-content textarea {
-  padding: 0.5rem;
-  border: 1px solid var(--outline);
-  border-radius: 0.4rem;
-  font-size: 1rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #333;
+  border-radius: 0;
+  font-size: 0.95rem;
   width: 100%;
   box-sizing: border-box;
+  background-color: #111;
+  color: var(--dark);
+  font-family: 'Oswald', sans-serif;
+  transition: border-color 0.2s;
+}
+
+.modal-content input:focus,
+.modal-content select:focus,
+.modal-content textarea:focus {
+  border-color: var(--neon-green);
+  box-shadow: 0 0 6px rgba(57, 255, 20, 0.25);
 }
 
 .modal-content textarea {
   resize: vertical;
   min-height: 80px;
+}
+
+.modal-content select option {
+  background-color: #111;
 }
 
 .modal-actions {
@@ -107,12 +203,12 @@
   margin-top: 0.5rem;
 }
 
-/* ── Musician Picker (SendInviteForm) ─────────── */
+/* ── MUSICIAN PICKER ──────────────────────────── */
 .musician-picker {
   margin-top: 1rem;
   padding: 1rem;
-  background-color: var(--offWhite);
-  border-radius: 0.5rem;
+  background-color: #0a0a0a;
+  border: 1px solid #222;
 }
 
 .musician-picker-grid {
@@ -124,16 +220,18 @@
 
 .musician-option {
   cursor: pointer;
-  border-radius: 0.5rem;
-  border: 2px solid transparent;
+  border: 2px solid #333;
+  border-radius: 0;
   transition: border-color 0.15s, box-shadow 0.15s;
+  background: #111;
 }
 
 .musician-option:hover {
-  border-color: var(--secondary);
+  border-color: var(--neon-blue);
+  box-shadow: var(--glow-blue);
 }
 
 .musician-option.selected {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(255, 180, 0, 0.25);
+  border-color: var(--neon-pink);
+  box-shadow: var(--glow-pink);
 }

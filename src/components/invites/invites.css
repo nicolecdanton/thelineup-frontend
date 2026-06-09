@@ -1,4 +1,4 @@
-/* ── Invite List ──────────────────────────────── */
+/* ── INVITE LIST ──────────────────────────────── */
 .invite-list {
   display: flex;
   flex-direction: column;
@@ -8,62 +8,99 @@
   margin: 0 auto;
 }
 
-/* ── Invite Card ──────────────────────────────── */
+/* ── INVITE CARD ──────────────────────────────── */
 .invite-card {
-  background-color: var(--white);
-  border-radius: 0.75rem;
+  background-color: var(--card-bg);
+  border: 1px solid #222;
+  border-left: 3px solid var(--neon-blue);
+  border-radius: 0;
   padding: 1.25rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.1), inset 0 0 40px rgba(0, 212, 255, 0.02);
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+  position: relative;
+  transition: box-shadow 0.2s, border-left-color 0.2s;
+}
+
+.invite-card::before {
+  content: '✦';
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  color: var(--neon-blue);
+  font-size: 0.7rem;
+  opacity: 0.4;
+}
+
+.invite-card:hover {
+  box-shadow: 0 0 18px rgba(0, 212, 255, 0.2);
+  border-left-color: var(--neon-green);
 }
 
 .invite-card p {
   margin: 0;
-  color: var(--dark);
-  font-size: 0.9rem;
+  color: #999;
+  font-size: 0.88rem;
+  letter-spacing: 0.5px;
 }
 
 .invite-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #1e1e1e;
 }
 
 .invite-card-header h3 {
-  margin: 0;
-  color: var(--dark);
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: #fff;
+  text-transform: uppercase;
 }
 
+/* ── INVITE ACTIONS ───────────────────────────── */
 .invite-card-actions {
   display: flex;
   gap: 0.75rem;
   margin-top: 0.75rem;
 }
 
-/* ── Status Badge ─────────────────────────────── */
+/* ── STATUS PILLS — neon signs ─────────────────── */
 .invite-status {
-  font-size: 0.75rem;
-  font-weight: bold;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  padding: 0.2rem 0.8rem;
+  border-radius: 0;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  border: 1px solid currentColor;
+  white-space: nowrap;
 }
 
 .status-pending {
-  background-color: #fff3cd;
-  color: #856404;
+  color: var(--neon-yellow);
+  border-color: var(--neon-yellow);
+  background: rgba(255, 230, 0, 0.06);
+  box-shadow: 0 0 6px rgba(255, 230, 0, 0.4), inset 0 0 8px rgba(255, 230, 0, 0.05);
+  text-shadow: 0 0 6px var(--neon-yellow);
 }
 
 .status-accepted {
-  background-color: #d4edda;
-  color: #155724;
+  color: var(--neon-green);
+  border-color: var(--neon-green);
+  background: rgba(57, 255, 20, 0.06);
+  box-shadow: var(--glow-green), inset 0 0 8px rgba(57, 255, 20, 0.05);
+  text-shadow: 0 0 6px var(--neon-green);
 }
 
 .status-declined {
-  background-color: #f8d7da;
-  color: #721c24;
+  color: var(--blood-red);
+  border-color: var(--blood-red);
+  background: rgba(204, 0, 0, 0.06);
+  box-shadow: var(--glow-red), inset 0 0 8px rgba(204, 0, 0, 0.05);
+  text-shadow: 0 0 6px var(--blood-red);
 }
