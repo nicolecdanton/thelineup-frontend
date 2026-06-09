@@ -1,0 +1,139 @@
+/* ── Gig List ─────────────────────────────────── */
+.gig-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ── Individual Gig Card ──────────────────────── */
+.gig-card {
+  background-color: var(--white);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gig-card h3 {
+  margin: 0 0 0.5rem;
+  color: var(--dark);
+}
+
+.gig-card p {
+  margin: 0.25rem 0;
+  color: var(--dark);
+}
+
+/* ── Slot List ────────────────────────────────── */
+.slot-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ── Individual Slot Row ──────────────────────── */
+.slot-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--offWhite);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+.slot-row p {
+  margin: 0;
+  flex: 1;
+}
+
+/* ── Modal ───────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background-color: var(--white);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  margin: 0 0 1.25rem;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal-content label {
+  font-weight: bold;
+  font-size: 0.875rem;
+  color: var(--dark);
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  padding: 0.5rem;
+  border: 1px solid var(--outline);
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal-content textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* ── Musician Picker (SendInviteForm) ─────────── */
+.musician-picker {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--offWhite);
+  border-radius: 0.5rem;
+}
+
+.musician-picker-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.musician-option {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.musician-option:hover {
+  border-color: var(--secondary);
+}
+
+.musician-option.selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 180, 0, 0.25);
+}

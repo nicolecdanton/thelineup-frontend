@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react"
 import { getAllInstruments } from "../../services/instruments"
 import { createSlot } from "../../services/gigslots"
+import "./gigslots.css"
 
 export const BookerCreateSlotForm = ({gigId, onClose}) => {
     const [instruments, setAllInstruments] = useState([])
@@ -19,7 +20,7 @@ export const BookerCreateSlotForm = ({gigId, onClose}) => {
     }
 
     return (
-        <div>
+        <div className="create-slot-form">
             <select value={selectedInstrument} onChange={(e)=> setSelectedInstrument(e.target.value)}>
                 <option value ="">Select an Instrument</option>
                 {instruments.map((instrument) => (
@@ -28,8 +29,8 @@ export const BookerCreateSlotForm = ({gigId, onClose}) => {
                     </option>
                 ))}
             </select>
-            <button onClick={handleSubmit}>Add Slot</button>
-            <button onClick={onClose}>Cancel</button>
+            <button className="btn-secondary" onClick={handleSubmit}>Add Slot</button>
+            <button className="btn-warning" onClick={onClose}>Cancel</button>
         </div>
         
     )

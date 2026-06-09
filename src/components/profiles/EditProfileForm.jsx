@@ -33,7 +33,7 @@ export const EditProfileForm = ({ profile, setShowEditForm }) => {
   }
 
   return (
-    <div>
+    <div className="edit-profile-form">
       <h2>Edit Profile</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="bio">Bio:</label>
@@ -69,8 +69,10 @@ export const EditProfileForm = ({ profile, setShowEditForm }) => {
           ))}
         </fieldset>
 
-        <button type="submit">Save Changes</button>
-        <button type="button" onClick={() => setShowEditForm(false)}>Cancel</button>
+        <div className="modal-actions">
+          <button type="submit" className="btn-primary">Save Changes</button>
+          <button type="button" className="btn-warning" onClick={() => setShowEditForm(false)}>Cancel</button>
+        </div>
       </form>
     </div>
   )

@@ -56,8 +56,10 @@ export const EditGigForm = ({gig, setSelectedGig}) => {
                 <label htmlFor="description">Description:</label>
                 <textarea id="description" value= {description} onChange={(e)=> setDescription(e.target.value)}></textarea>
 
-                <button type="submit">Update Gig</button>
-                <button type="button" onClick={() => setSelectedGig(null)}>Cancel</button>
+                <div className="modal-actions">
+                    <button type="submit" className="btn-primary">Update Gig</button>
+                    <button type="button" className="btn-warning" onClick={() => setSelectedGig(null)}>Cancel</button>
+                </div>
             </form>
         </div>
     )

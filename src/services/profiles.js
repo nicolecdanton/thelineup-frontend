@@ -29,3 +29,10 @@ export const updateProfile = async (profileData) => {
   })
   return res.json()
 }
+
+export const getProfileByInstrument = async (instrumentId) => {
+  const res = await fetch(`${baseUrl}/profiles/?instrument_id=${instrumentId}`, {
+    headers: { Authorization: `Token ${localStorage.getItem("lineup_token")}` },
+  })
+  return res.json()
+}

@@ -1,0 +1,66 @@
+/* ── Slot List ────────────────────────────────── */
+.slot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+/* ── Individual Slot Row ──────────────────────── */
+.slot-row {
+  background-color: var(--offWhite);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slot-row-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.slot-row-header p {
+  margin: 0;
+  font-weight: bold;
+  color: var(--dark);
+}
+
+/* ── Invite List (inside slot row) ───────────── */
+.invite-count {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--dark);
+  opacity: 0.7;
+}
+
+.slot-invite-list ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--dark);
+}
+
+.slot-invite-list li {
+  margin-bottom: 0.2rem;
+}
+
+/* ── Create Slot Form ─────────────────────────── */
+.create-slot-form {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.create-slot-form select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--outline);
+  border-radius: 0.4rem;
+  font-size: 0.95rem;
+  flex: 1;
+}

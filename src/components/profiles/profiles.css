@@ -1,0 +1,121 @@
+/* ── Profile List ─────────────────────────────── */
+.profile-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ── Profile Card ─────────────────────────────── */
+.profile-card {
+  background-color: var(--white);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 220px;
+}
+
+.profile-card h3 {
+  margin: 0 0 0.25rem;
+  color: var(--dark);
+}
+
+.profile-username {
+  margin: 0 0 0.5rem;
+  color: var(--secondary);
+  font-size: 0.875rem;
+}
+
+.profile-bio {
+  font-size: 0.875rem;
+  color: var(--dark);
+  margin: 0.5rem 0;
+}
+
+.profile-links {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+}
+
+.profile-links a {
+  color: var(--secondary);
+}
+
+.profile-links a:hover {
+  text-decoration: underline;
+}
+
+.profile-instruments {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.profile-instruments ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.profile-instruments li {
+  margin-bottom: 0.2rem;
+}
+
+/* ── My Profile Page ──────────────────────────── */
+.my-profile-page {
+  padding: 1.5rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* ── Edit Profile Form (modal) ────────────────── */
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.edit-profile-form label {
+  font-weight: bold;
+  font-size: 0.875rem;
+  color: var(--dark);
+}
+
+.edit-profile-form input,
+.edit-profile-form textarea {
+  padding: 0.5rem;
+  border: 1px solid var(--outline);
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edit-profile-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.edit-profile-form fieldset {
+  border: 1px solid var(--outline);
+  border-radius: 0.4rem;
+  padding: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.edit-profile-form fieldset legend {
+  font-weight: bold;
+  font-size: 0.875rem;
+  padding: 0 0.25rem;
+}
+
+.edit-profile-form fieldset label {
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}

@@ -12,14 +12,14 @@ export const getInvitesBySlot = async (slotId) => {
   return res.json()
 }
 
-export const sendInvite = async (slotData) => {
+export const sendInvite = async (musicianData) => {
   const res = await fetch(`http://localhost:8000/invites/`, {
     method: "POST",
     headers: {
       Authorization: `Token ${localStorage.getItem("lineup_token")}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(slotData),
+    body: JSON.stringify(musicianData),
   })
   return res.json()
 }

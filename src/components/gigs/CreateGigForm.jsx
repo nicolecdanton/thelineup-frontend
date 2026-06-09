@@ -57,8 +57,10 @@ export const CreateGigForm = ({ setShowCreateForm }) => {
                 <label htmlFor="description">Description:</label>
                 <textarea id="description" value= {description} onChange={(e)=> setDescription(e.target.value)}></textarea>
 
-                <button type="submit">Create Gig</button>
-                <button type="button" onClick={() => setShowCreateForm(false)}>Cancel</button>
+                <div className="modal-actions">
+                    <button type="submit" className="btn-primary">Create Gig</button>
+                    <button type="button" className="btn-warning" onClick={() => setShowCreateForm(false)}>Cancel</button>
+                </div>
             </form>
         </div>
     )

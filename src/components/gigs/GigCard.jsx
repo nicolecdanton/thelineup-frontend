@@ -3,6 +3,7 @@ import { getMyGigs } from '../../services/gigs'
 import { EditGigForm } from './EditGigForm'
 import { BookerViewGigSlotRow } from '../gigSlots/BookerViewGigSlotRow'
 import { BookerCreateSlotForm } from '../gigSlots/BookerCreateSlotForm'
+import './gigs.css'
 
 //GigCards will show the gigs that the current user (the booker) created. Parent component: MyGigsPage.jsx
 export const GigCards = ({ showCreateForm }) => {
@@ -16,9 +17,9 @@ export const GigCards = ({ showCreateForm }) => {
     }, [showCreateForm])
 
   return (
-    <div className="gig-card">
+    <div className="gig-list">
       {gigs.map((gig) => (
-        <div key={gig.id}>
+        <div key={gig.id} className="gig-card">
           <h3>{gig.title}</h3>
           <p>Venue: {gig.venue.name}</p>
           <p>Date: {gig.date}</p>
@@ -29,10 +30,16 @@ export const GigCards = ({ showCreateForm }) => {
             <BookerViewGigSlotRow gigId={gig.id} slotAdded={showSlotFormForGig} />
             {showSlotFormForGig === gig.id
               ? <BookerCreateSlotForm gigId={gig.id} onClose={() => setShowSlotFormForGig(null)} />
-              : <button onClick={() => setShowSlotFormForGig(gig.id)}>Add a new slot</button>
+              : <button className="btn-secondary" onClick={() => setShowSlotFormForGig(gig.id)}>Add a new slot</button>
             }
-          <button onClick={() => setSelectedGig(gig)}>Edit</button>
-          {selectedGig?.id === gig.id && <EditGigForm gig={selectedGig} setSelectedGig={setSelectedGig} />}
+          <button className="btn-info" onClick={() => setSelectedGig(gig)}>Edit</button>
+          {selectedGig?.id === gig.id && (
+            <div className="modal-overlay">
+              <div className="modal-content">
+                <EditGigForm gig={selectedGig} setSelectedGig={setSelectedGig} />
+              </div>
+            </div>
+          )}
             {/* passing two props to EditGigForm: the gig to be edited and a function to set the selected gig back to null when the form is closed */}
         </div>
         
