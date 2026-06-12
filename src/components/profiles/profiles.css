@@ -1,4 +1,4 @@
-/* ── Profile List ─────────────────────────────── */
+/* Profile List layout */
 .profile-list {
   display: flex;
   flex-wrap: wrap;
@@ -8,7 +8,7 @@
   margin: 0 auto;
 }
 
-/* ── Profile Card ─────────────────────────────── */
+/* Profile Card*/
 .profile-card {
   background-color: var(--white);
   border-radius: 0.75rem;
@@ -63,14 +63,14 @@
   margin-bottom: 0.2rem;
 }
 
-/* ── My Profile Page ──────────────────────────── */
+/* My Profile Page */
 .my-profile-page {
   padding: 1.5rem;
   max-width: 400px;
   margin: 0 auto;
 }
 
-/* ── Edit Profile Form (modal) ────────────────── */
+/* Edit Profile Form (modal stlying) */
 .edit-profile-form {
   display: flex;
   flex-direction: column;

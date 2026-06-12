@@ -1,5 +1,6 @@
 import { respondToInvite } from "../../services/invites"
 
+//The cards representing invite objects
 // parent component: MyInvitesPage
 export const InviteCard = ({ invite, onRespond }) => {
     const handleAccept = () => {
@@ -14,7 +15,9 @@ export const InviteCard = ({ invite, onRespond }) => {
         <div className="invite-card">
             <div className="invite-card-header">
                 <h3>{invite.slot.gig.title}</h3>
-                <span className={`invite-status status-${invite.status}`}>{invite.status}</span>
+                <span 
+                    className={`invite-status status-${invite.status}`}>
+                        {invite.status}</span>
             </div>
             <p>{invite.slot.gig.venue.name}</p>
             <p>{invite.slot.gig.date} at {invite.slot.gig.time}</p>

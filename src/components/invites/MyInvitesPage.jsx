@@ -3,6 +3,7 @@ import { getMyInvites } from "../../services/invites"
 import { InviteCard } from "./InviteCard"
 import "./invites.css"
 
+//This is /invites; the place where i can see all the invites i have recieved for other peoples gigs.
 export const MyInvitesPage = () => {
     const [invites, setInvites] = useState([])
 

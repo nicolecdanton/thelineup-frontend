@@ -4,6 +4,7 @@ import { ProfileCard } from "../profiles/ProfileCard"
 import { sendInvite } from "../../services/invites"
 import "./invites.css"
 
+// This is the form that shows up when i want to send invites out for a given slot. I can select musician profile to send invite to.
 //parent component: BookerViewGigSlotRow
 export const SendInviteForm = ({slot, onClose}) => {
 
