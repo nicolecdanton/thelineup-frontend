@@ -1,3 +1,4 @@
+//show the slots for a specific gig
 export const getSlotsbyGig = async (gigId) => {
     const res = await fetch(`http://localhost:8000/gigslots/?gig_id=${gigId}`, {
     headers: { Authorization: `Token ${localStorage.getItem("lineup_token")}` },
@@ -15,11 +16,3 @@ export const createSlot = async (slotData) => {
   return res.json()
 }
 
-
-export const updateSlot = async (gigslotid, slotData) => {
-    await fetch(`http://localhost:8000/gigslots/${gigslotid}`, {
-    method: "PUT",
-    headers: { Authorization: `Token ${localStorage.getItem("lineup_token")}`, "Content-Type": "application/json" },
-    body: JSON.stringify(slotData),
-  })
-}
