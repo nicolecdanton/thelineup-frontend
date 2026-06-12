@@ -3,7 +3,7 @@ import { getAllInstruments } from "../../services/instruments"
 import { createSlot } from "../../services/gigslots"
 import "./gigslots.css"
 
-export const BookerCreateSlotForm = ({gigId, onClose}) => {
+export const BookerCreateSlotForm = ({gigId, onClose, onSlotAdded}) => {
     const [instruments, setAllInstruments] = useState([])
     const [selectedInstrument,setSelectedInstrument] =useState("")
 
@@ -16,7 +16,10 @@ export const BookerCreateSlotForm = ({gigId, onClose}) => {
         createSlot({
             gig_id: gigId,
             instrument_id: selectedInstrument
-        }).then(() => onClose())
+        }).then(() => {
+            onSlotAdded()
+            onClose()
+    })
     }
 
     return (
