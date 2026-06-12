@@ -2,7 +2,7 @@ import { createGig } from "../../services/gigs"
 import { useState, useEffect} from "react"
 import { getAllVenues } from "../../services/venues"
 
-export const CreateGigForm = ({ setShowCreateForm }) => {
+export const CreateGigForm = ({ setShowCreateForm, onGigCreated }) => {
     const [title, setTitle] = useState("")
     const [venue, setVenue] = useState("")
     const [date, setDate] = useState("")
@@ -27,7 +27,10 @@ export const CreateGigForm = ({ setShowCreateForm }) => {
             venue_id: venue,
             pay_per_musician: payPerMusician,
             description
-        }).then(()=> setShowCreateForm(false))
+        }).then(()=>{
+                setShowCreateForm(false)
+                onGigCreated()
+                })
     }
 
 

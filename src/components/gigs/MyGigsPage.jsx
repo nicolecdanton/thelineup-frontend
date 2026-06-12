@@ -1,10 +1,20 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { CreateGigForm } from "./CreateGigForm"
 import { GigCards } from "./GigCard"
+import { getMyGigs } from "../../services/gigs"
 import "./gigs.css"
 
 export const MyGigsPage = () => {
-    const [showCreateForm, setShowCreateForm] = useState(false)
+     const [gigs, setGigs] = useState([])
+     const [showCreateForm, setShowCreateForm] = useState(false)
+
+    const loadGigs = () => {
+        getMyGigs().then((GigsArr) => setGigs(GigsArr))
+    }
+
+    useEffect(() => {
+       loadGigs()
+        }, [])
 
     return (
         <div>
@@ -13,11 +23,11 @@ export const MyGigsPage = () => {
             {showCreateForm && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <CreateGigForm setShowCreateForm={setShowCreateForm} />
+                        <CreateGigForm setShowCreateForm={setShowCreateForm} onGigCreated={loadGigs}/>
                     </div>
                 </div>
             )}
-            <GigCards showCreateForm={showCreateForm} />
+            <GigCards gigs={gigs} onGigUpdated={loadGigs}/>
         </div>
     )
 }

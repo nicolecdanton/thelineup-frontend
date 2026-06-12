@@ -1,20 +1,16 @@
-import { useState, useEffect } from 'react'
-import { getMyGigs } from '../../services/gigs'
+import { useState } from 'react'
 import { EditGigForm } from './EditGigForm'
 import { BookerViewGigSlotRow } from '../gigSlots/BookerViewGigSlotRow'
 import { BookerCreateSlotForm } from '../gigSlots/BookerCreateSlotForm'
 import './gigs.css'
 
 //GigCards will show the gigs that the current user (the booker) created. Parent component: MyGigsPage.jsx
-export const GigCards = ({ showCreateForm }) => {
+export const GigCards = ({ gigs, onGigUpdated }) => {
 
-  const [gigs, setGigs] = useState([])
-  const [selectedGig, setSelectedGig] = useState(null)
+  const [selectedGigToEdit, setSelectedGigToEdit] = useState(null)
   const [showSlotFormForGig, setShowSlotFormForGig] = useState(null)
 
-  useEffect(() => {
-    getMyGigs().then((GigsArr) => setGigs(GigsArr))
-    }, [showCreateForm])
+
 
   return (
     <div className="gig-list">
@@ -32,11 +28,11 @@ export const GigCards = ({ showCreateForm }) => {
               ? <BookerCreateSlotForm gigId={gig.id} onClose={() => setShowSlotFormForGig(null)} />
               : <button className="btn-secondary" onClick={() => setShowSlotFormForGig(gig.id)}>Add a new slot</button>
             }
-          <button className="btn-info" onClick={() => setSelectedGig(gig)}>Edit</button>
-          {selectedGig?.id === gig.id && (
+          <button className="btn-info" onClick={() => setSelectedGigToEdit(gig)}>Edit</button>
+          {selectedGigToEdit?.id === gig.id && (
             <div className="modal-overlay">
               <div className="modal-content">
-                <EditGigForm gig={selectedGig} setSelectedGig={setSelectedGig} />
+                <EditGigForm gig={selectedGigToEdit} setSelectedGigToEdit={setSelectedGigToEdit} onGigUpdated={onGigUpdated}/>
               </div>
             </div>
           )}

@@ -7,9 +7,9 @@ export const EditProfileForm = ({ profile, setShowEditForm }) => {
   const [bio, setBio] = useState(profile.bio)
   const [soundcloud, setSoundcloud] = useState(profile.soundcloud)
   const [instagram, setInstagram] = useState(profile.instagram)
-  const [selectedInstruments, setSelectedInstruments] = useState(
-    (profile.instruments ?? []).map((i) => i.id)
-  )
+  const currentInstruments = (profile.instruments ?? []).map((i) => i.id)
+
+  const [selectedInstruments, setSelectedInstruments] = useState((currentInstruments))
   const [allInstruments, setAllInstruments] = useState([])
 
   useEffect(() => {

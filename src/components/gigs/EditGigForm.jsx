@@ -2,7 +2,7 @@ import { updateGig } from "../../services/gigs"
 import { useState, useEffect} from "react"
 import { getAllVenues } from "../../services/venues"
 
-export const EditGigForm = ({gig, setSelectedGig}) => {
+export const EditGigForm = ({gig, setSelectedGigToEdit, onGigUpdated}) => {
 
 
     const [title, setTitle] = useState(gig.title)
@@ -26,7 +26,10 @@ export const EditGigForm = ({gig, setSelectedGig}) => {
             venue_id: venue,
             pay_per_musician: payPerMusician,
             description
-        }).then(()=> setSelectedGig(null))
+        }).then(()=> {
+            onGigUpdated()
+            setSelectedGigToEdit(null)
+            })
     }
 
 

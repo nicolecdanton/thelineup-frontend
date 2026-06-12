@@ -5,12 +5,6 @@ export const getMyInvites = async () => {
   return res.json()
 }
 
-export const getInvitesBySlot = async (slotId) => {
-  const res = await fetch(`http://localhost:8000/invites/by_slot/?gigslot_id=${slotId}`, {
-    headers: { Authorization: `Token ${localStorage.getItem("lineup_token")}` },
-  })
-  return res.json()
-}
 
 export const sendInvite = async (musicianData) => {
   const res = await fetch(`http://localhost:8000/invites/`, {

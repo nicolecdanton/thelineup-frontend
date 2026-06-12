@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+    import { useState, useEffect } from "react"
 import { getMyInvites } from "../../services/invites"
 import { InviteCard } from "./InviteCard"
 import "./invites.css"
@@ -11,7 +11,7 @@ export const MyInvitesPage = () => {
     }
 
     useEffect(() => {
-        getMyInvites().then((invitesArray) => setInvites(invitesArray))
+        loadInvites()
     }, [])
 
     return (
