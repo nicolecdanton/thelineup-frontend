@@ -1,0 +1,43 @@
+.dashboard {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2.5rem;
+  background-color: var(--white);
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.dashboard h1 {
+  font-size: 2rem;
+  color: var(--dark);
+  margin-bottom: 0.75rem;
+}
+
+.dashboard p {
+  color: var(--dark);
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+
+.dashboard-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.dashboard-link {
+  padding: 0.6rem 1.25rem;
+  border-radius: 0.5rem;
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.dashboard-link:hover {
+  background-color: #e5a000;
+}
