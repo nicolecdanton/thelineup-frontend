@@ -24,3 +24,10 @@ export const updateGig = async (id, gigData) => {
     body: JSON.stringify(gigData),
   })
 }
+
+export const deleteGig = async (id) => {
+  await fetch(`http://localhost:8000/gigs/${id}/`, {
+    method: "DELETE",
+    headers: { Authorization: `Token ${localStorage.getItem("lineup_token")}` },
+  })
+}

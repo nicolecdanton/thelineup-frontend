@@ -1,4 +1,4 @@
-    import { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { getMyInvites } from "../../services/invites"
 import { InviteCard } from "./InviteCard"
 import "./invites.css"

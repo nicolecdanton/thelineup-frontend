@@ -4,7 +4,7 @@ import { BookerViewGigSlotRow } from '../gigSlots/BookerViewGigSlotRow'
 import './gigs.css'
 
 //GigCards will show the gigs that the current user (the booker) created. Parent component: MyGigsPage.jsx
-export const GigCards = ({ gigs, onGigUpdated }) => {
+export const GigCards = ({ gigs, onGigUpdated, onGigDeleted }) => {
 
   const [selectedGigToEdit, setSelectedGigToEdit] = useState(null)
 
@@ -22,9 +22,12 @@ export const GigCards = ({ gigs, onGigUpdated }) => {
           <p>Description: {gig.description}</p>
           <p>Slots:</p>
           <BookerViewGigSlotRow gigId={gig.id} />
-          <button className="btn-info" 
+          <button className="btn-info"
                 onClick={() => setSelectedGigToEdit(gig)}>
                     Edit</button>
+          <button className="btn-danger"
+                onClick={() => onGigDeleted(gig.id)}>
+                    Delete</button>
           
           {selectedGigToEdit?.id === gig.id && (
             <div className="modal-overlay">

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { CreateGigForm } from "./CreateGigForm"
 import { GigCards } from "./GigCard"
-import { getMyGigs } from "../../services/gigs"
+import { getMyGigs, deleteGig } from "../../services/gigs"
 import "./gigs.css"
 
 // The /gigs page. Its the home to create gigs and see all of the gigCards for gigs i have created. 
@@ -12,6 +12,10 @@ export const MyGigsPage = () => {
 
     const loadGigs = () => {
         getMyGigs().then((GigsArr) => setGigs(GigsArr))
+    }
+
+    const handleDeleteGig = (id) => {
+        deleteGig(id).then(loadGigs)
     }
 
     useEffect(() => {
@@ -35,9 +39,10 @@ export const MyGigsPage = () => {
                 </div>
             )}
 
-            <GigCards 
-                gigs={gigs} 
-                onGigUpdated={loadGigs}/>
+            <GigCards
+                gigs={gigs}
+                onGigUpdated={loadGigs}
+                onGigDeleted={handleDeleteGig}/>
         </div>
     )
 }

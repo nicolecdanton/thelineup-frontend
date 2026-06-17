@@ -89,8 +89,7 @@ export const CreateGigForm = ({ setShowCreateForm, onGigCreated }) => {
                     id="description" 
                     value= {description} 
                     onChange={(e)=> setDescription(e.target.value)}></textarea>
-
-
+                
                 <div className="modal-actions">
                     <button type="submit" className="btn-primary">Create Gig</button>
                     <button type="button" 
